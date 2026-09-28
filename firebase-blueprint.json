@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and explorer telemetry",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "xp": { "type": "number" },
+        "streak": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "displayName"]
+    },
+    "Bookmark": {
+      "title": "Bookmark",
+      "description": "Saved Chennai discoveries in field journal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "discoveryId": { "type": "string" },
+        "title": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "discoveryId", "title"]
+    },
+    "JournalEntry": {
+      "title": "JournalEntry",
+      "description": "Captured photos and notes for discovered quests",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "questTitle": { "type": "string" },
+        "notes": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "questTitle", "notes"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "User" },
+      "description": "User profile data"
+    },
+    "/users/{userId}/bookmarks/{bookmarkId}": {
+      "schema": { "$ref": "Bookmark" },
+      "description": "User saved bookmarks"
+    },
+    "/users/{userId}/journalEntries/{entryId}": {
+      "schema": { "$ref": "JournalEntry" },
+      "description": "User captured field journal photos and notes"
+    }
+  }
+}

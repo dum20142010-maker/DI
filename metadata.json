@@ -1,0 +1,6 @@
+{
+  "name": "DÌ — Discover It",
+  "description": "Turn Chennai into an adventure. Discover heritage, food lore, architecture, and secret chimes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
